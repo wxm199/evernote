@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Sidebar />
+    <router-view></router-view>
   </div>
 </template>
-
+<script>
+import Sidebar from "@/components/sidebar";
+export default {
+  components: {
+    Sidebar,
+  },
+};
+</script>
 <style lang="stylus">
 #app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+  display flex
+  font-family:"Microsoft YaHei","微软雅黑",Arial,sans-serif
+  font-weight normal
+  line-height 1
+  -webkit-font-smoothing:antialiased
+  // flex-direction
+.content
+  width 500px;
+  margin 0 auto
+  height 100%
+  overflow auto
 </style>
