@@ -6,10 +6,14 @@
 </template>
 <script>
 import Sidebar from "@/components/sidebar";
+import { auth } from "@/apis/auth";
+
+auth().then((res) => console.log(res));
 export default {
   components: {
     Sidebar,
   },
+  methods: {},
 };
 </script>
 <style lang="stylus">

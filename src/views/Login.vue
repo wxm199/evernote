@@ -42,13 +42,14 @@
 </template>
 
 <script>
+import { login, register } from "@/apis/auth";
 export default {
   data() {
     return {
       username: "",
       password: "",
       showLogin: true,
-      isLegal: true,
+      isLegal: false,
       notice: "",
     };
   },
@@ -59,17 +60,17 @@ export default {
         this.showLogin = !this.showLogin;
     },
     register() {
-      if (this.validUsername() && this.validPassword()) {
-        console.log("开始注册");
+      if (this.isLegal) {
+        register(this.username, this.password).then((res) => console.log(res));
       }
     },
     login() {
-      if (this.validUsername() && this.validPassword()) {
-        console.log("登录");
+      if (this.isLegal) {
+        login(this.username, this.password).then((res) => console.log(res));
       }
     },
     validUsername() {
-      if (!/[\w\u4e00-\u9fa5]{6,10}/.test(this.username)) {
+      if (!/[\w\u4e00-\u9fa5]{3,10}/.test(this.username)) {
         this.isLegal = false;
         this.notice = "用户名必须是6-10位长度的数字、英文大小写字母或中文";
       } else {
