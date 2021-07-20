@@ -5,14 +5,14 @@ axios.defaults.baseURL = process.env.VUE_APP_URL;
 // axios.defaults.headers.post["Content-Type"] =
 //   "application/x-www-form-urlencoded";
 axios.defaults.withCredentials = true;
-
+import { Message } from "element-ui";
 export default function (url, type = "GET", data = {}) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const option = {
       url,
       method: type,
       validateStatus: function (status) {
-        return status >= 200 && status < 300;
+        return (status >= 200 && status < 300) || status == 400;
       },
     };
     if (type.toLowerCase() == "get") {
@@ -24,10 +24,14 @@ export default function (url, type = "GET", data = {}) {
     return axios(option)
       .then((res) => {
         if (res.status == 200) resolve(res.data);
-        else reject(res.data);
+        else {
+          Message.error({ message: res.data.msg });
+          // reject(res);
+        }
       })
-      .catch(() => {
-        reject({ msg: "网络异常" });
+      .catch((err) => {
+        Message.error({ message: err });
+        // reject(err);
       });
   });
 }

@@ -43,6 +43,8 @@
 
 <script>
 import { login, register } from "@/apis/auth";
+import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -54,6 +56,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["getAllNotebooks"]),
     toggle(val) {
       console.log(val);
       if ((val == 1 && this.showLogin) || (val == 2 && !this.showLogin))
@@ -66,7 +69,14 @@ export default {
     },
     login() {
       if (this.isLegal) {
-        login(this.username, this.password).then((res) => console.log(res));
+        login(this.username, this.password)
+          .then(() => {
+            return this.getAllNotebooks();
+          })
+          .then((res) => {
+            console.log(res);
+            this.$router.push({ path: "/" });
+          });
       }
     },
     validUsername() {

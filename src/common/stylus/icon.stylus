@@ -1,6 +1,6 @@
 @font-face
   font-family: 'iconfont' /* Project id 2624561 */
-  src: url('//at.alicdn.com/t/font_2624561_ycv6g930g4i.woff2?t=1624327436472') format('woff2'), url('//at.alicdn.com/t/font_2624561_ycv6g930g4i.woff?t=1624327436472') format('woff'), url('//at.alicdn.com/t/font_2624561_ycv6g930g4i.ttf?t=1624327436472') format('truetype')
+  src: url('//at.alicdn.com/t/font_2624561_xx71k4u9i1e.woff2?t=1625554357011') format('woff2'), url('//at.alicdn.com/t/font_2624561_xx71k4u9i1e.woff?t=1625554357011') format('woff'), url('//at.alicdn.com/t/font_2624561_xx71k4u9i1e.ttf?t=1625554357011') format('truetype')
 
 .iconfont
   font-family: 'iconfont' !important
@@ -8,6 +8,21 @@
   font-style: normal
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
+.icon-suoxiao:before
+  content: '\e7bf'
+
+.icon-fullscreen:before
+  content: '\e7bd'
+
+.icon-delete:before
+  content: '\e6af'
+
+.icon-down:before
+  content: '\e6f7'
+
+.icon-notebook:before
+  content: '\e6bc'
 
 .icon-logo:before
   content: '\e615'
